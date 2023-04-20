@@ -1,0 +1,1581 @@
+%%% -*-LaTeX-*-
+%%% introcoupling.tex.old1
+%%% Prettyprinted by texpretty lex version 0.02 [21-May-2001]
+%%% on Wed Apr 19 14:17:42 2023
+%%% for Steve Dunbar (sdunbar@family-desktop)
+
+%%% -*-LaTeX-*-
+%%% introcoupling.tex.orig
+%%% Prettyprinted by texpretty lex version 0.02 [21-May-2001]
+%%% on Wed Apr 19 14:08:01 2023
+%%% for Steve Dunbar (sdunbar@family-desktop)
+
+\documentclass[12pt]{article}
+
+\input{../../../../etc/macros} %\input{../../../../etc/mzlatex_macros}
+\input{../../../../etc/pdf_macros}
+
+\bibliographystyle{plain}
+
+\begin{document}
+
+\myheader \mytitle
+
+\hr
+
+\sectiontitle{Introduction to Coupling}
+
+\hr
+
+\usefirefox
+
+\hr
+
+% \visual{Study Tip}{../../../../CommonInformation/Lessons/studytip.png}
+% \section*{Study Tip}
+
+% \hr
+
+\visual{Rating}{../../../../CommonInformation/Lessons/rating.png}
+\section*{Rating} %one of
+% Everyone: contains no mathematics.
+% Student: contains scenes of mild algebra or calculus that may require guidance.
+% Mathematically Mature: may contain mathematics beyond calculus with proofs.
+Mathematicians Only:  prolonged scenes of intense rigor.
+
+\hr
+
+\visual{Section Starter Question}{../../../../CommonInformation/Lessons/question_mark.png}
+\section*{Section Starter Question}
+
+What is the Poisson approximation to the binomial distribution with
+large \( n \) and small \( p \) such that \( np = \lambda \)?  How is
+the approximation usually proved?
+
+\hr
+
+\visual{Key Concepts}{../../../../CommonInformation/Lessons/keyconcepts.png}
+\section*{Key Concepts}
+
+\begin{enumerate}
+    \item
+        A \defn{coupling} of a collection of random variables \( X_\nu \),
+        where \( \nu \) is from some index set, is a similarly indexed
+        set \( (\hat{X}_\nu) \) such that \( X_{\nu} \disteq \hat{X}_{\nu}
+        \) for each \( \nu \).  A coupling has fixed marginal
+        distributions given by the \( X_\nu \).  The goal is to find the
+        joint distribution for the coupled variables that satisfies
+        desired properties for proving a theorem or relationship.  Many
+        special kinds of couplings exist and are commonly used for
+        probabilistic proofs.
+    \item
+        Let \( X \) and \( X' \) be random variables.  Then \( X
+        \stackrel{\mathcal{D}}{\le} X' \) if and only if there is a
+        coupling \( (X,X') \) such that \( \hat{X} \le \hat{X}' \).  In
+        words, \( X \) is dominated in distribution by \( X' \) if and
+        only there is a coupling such that \( \hat{X} \) is \emph{pointwise
+        dominated} by \( \hat{X}' \).
+    \item
+        Let \( X_1 \), \( X_2 \), \( X_1' \), \( X_2' \) be random
+        variables such that:
+        \begin{enumerate}
+            \item
+                \( X_1 \) and \( X_2 \) are independent,
+            \item
+                \( X_1' \) and \( X_2' \) are independent,
+            \item
+                \( X_1\stackrel{\mathcal{D}}{\le} X_1' \) and \( X_2\stackrel
+                {\mathcal{D}}{\le} X_2' \).
+        \end{enumerate}
+        Then \( X_1 + X_2 \stackrel{\mathcal{D}}{\le} X_1' + X_2' \).
+    \item
+        The Discrete Variable Coupling Event Inequality says that if \(
+        C \) is a coupling event of a family of discrete random
+        variables \( X_{\nu} \) taking values in a finite or countable
+        set \( E \), then
+        \[
+            \Prob{C} \le \sum\limits_{x \in E} \inf_{\nu \in \mathbb{I}}
+            p_\nu(x).
+        \]
+    \item
+        A coupling with a coupling event \( C \) such that
+        \[
+            \Prob{C} = \sum\limits_{x \in E} \inf_{\nu \in \mathbb{I}} p_\nu
+            (x)
+        \] is a \defn{maximal coupling} and \( C \) is a \defn{maximal
+        coupling event}.
+    \item
+        Suppose \( X_{\nu} \) is family of discrete or continuous random
+        variables \( X_{\nu} \) taking values in a finite or countable
+        set \( E \).  Then there exists a maximal coupling.
+
+    \item
+        Let \( X_1, \dots X_n \) be independent Bernoulli, i.e. \( 0 \)--\(
+        1 \), random variables with success \( \Prob{X_{\nu} = 1} = p_\nu
+        \) where \( 0 \le p_\nu \le 1 \).  Let \( S_n = X_1 + \cdots + X_n
+        \) be the number of successes.  If \( \sum{\nu=1}^n p_{\nu} \to
+        \lambda \) while \( \max_{1 \le \nu \le n} p_{\nu} \to 0 \),
+        then \( S_{n} \distto
+        \operatorname{Pois}
+        (\lambda) \) can be proved using maximal coupling.
+\end{enumerate}
+
+\hr
+
+\visual{Vocabulary}{../../../../CommonInformation/Lessons/vocabulary.png}
+\section*{Vocabulary}
+\begin{enumerate}
+    \item
+        A \defn{copy} of a random variable \( X \) is a random variable \(
+        \hat{X} \) with the same distribution as \( X \), \( X \disteq
+        \hat{X} \).
+    \item
+        A \defn{coupling} of a collection of random variables \( X_\nu \),
+        where \( \nu \) is from some index set \( \mathbb{I} \), is a
+        similarly indexed set \( (\hat{X}_\nu) \) such that \( X_{\nu}
+        \disteq \hat{X}_{\nu} \) for each \( \nu \).
+    \item
+        A simple and often useful coupling of \( X_{\nu} \) is \( (\hat{X}_\nu)
+        \) with the \( \hat{X}_{\nu} \) independent, called the \defn{independence
+        coupling}.
+    \item
+        A \defn{self-coupling} of a random variable \( X \) is a family \(
+        (\hat{X}_\nu) \) where each \( \hat{X}_\nu \) is a copy of \( X \).
+    \item
+        An \defn{i.i.d.\ coupling} consists of independent copies of \(
+        X \).
+    \item
+        If \( G(x) \le F(x) \) for \( x \in \Reals \) then \( X \) is
+        said to be \defn{dominated in distribution} by \( X' \), denoted
+        by \( X \stackrel{\mathcal{D}}{\le} \).
+    \item
+        Suppose \( (\hat{X}_{\nu}) \) is a coupling of random variables \(
+        X_{\nu} \) for \( \nu \) in some index set \( \mathbb{I} \).  If
+        \[
+            C \subset [ \hat{X}_i = \hat{X}_j] \text{ for all } i,j
+        \] then \( C \) is \defn{coupling event}.
+    \item
+        A coupling with a coupling event \( C \) such that
+        \[
+            \Prob{C} \le \sum\limits_{x \in E} \inf_{\nu \in \mathbb{I}}
+            p_\nu(x)
+        \] is a \defn{maximal coupling} and \( C \) is a \defn{maximal
+        coupling event}.
+    \item
+        The coupling of \( (X,Y) \) achieving the minimum total
+        variation distance is the \defn{optimal coupling}.
+    \item
+        Define a \defn{coupling} of Markov chains with transition matrix
+        \( P \) to be a process \( (X_t, Y_t) \) for \( t = 0, 1,2,3,
+        \dots \) so that both \( (X_t) \) and \( (Y_t) \) are Markov
+        chains with transition matrix \( P \), although the two chains
+        may have different starting distributions.
+    \item
+        Given a Markov chain on \( \mathcal{X} \) with transition matrix
+        \( P \), a \defn{Markovian coupling} of two \( P \)-chains is a
+        Markov chain \( (X_t, Y_t) \) for \( t=1, 2, 3, \dots \) with
+        state space \( \mathcal{X} \times \mathcal{X} \) which
+        satisfies, for all \( x \), \( y \), \( x' \), \( y' \),
+        \begin{align*}
+            \Prob{X_{t+1} = x' \given X_t = x, Y_t = y} &= P(x,x') \\
+            \Prob{Y_{t+1} = y' \given Y_t = y, X_t = x} &= P(y,y') \\
+        \end{align*}
+    \item
+        The \defn{coalescence time}, the \defn{coupling time} or the
+        \defn{coupling epoch}.  -- the first time two Markov chains
+        meet, that is
+        \[
+            \tau_{\text{coal}} = \min \setof{t}{X_s = Y_s}.
+        \]
+    \item
+        The \defn{classical coupling} -- a coupling of \( X \) and \(
+        X'' \) that follows the path of \( X' \) up to \( \tau_{coal} \)
+        and then switches to \( X \),
+        \[
+            X_t'' =
+            \begin{cases}
+                X_t' & t < \tau_{coal} \\
+                X_t & t \ge \tau_{coal}.  \\
+            \end{cases}
+        \]
+    \item
+        The Markov chain is \defn{positive recurrent} if \( m_j = \Esub{j}
+        {\tau_j < \infty} \).
+\end{enumerate}
+
+\hr
+
+\section*{Notation}
+\begin{enumerate}
+    \item
+        \( \hat{X} \) -- a \defn{copy} of a random variable \( X \) with
+        the same distribution as \( X \), \( X \disteq \hat{X} \).
+    \item
+        \( \nu \) -- an arbitrary index variable
+    \item
+        \( \mathbb{I} \) -- index set
+    \item
+        \( (\hat{X}_\nu) \) -- copies written in parentheses to indicate
+        the \( \hat{X}_\nu \) random variables have a joint distribution
+    \item
+        \( f \) and \( g \) -- nondecreasing bounded functions
+    \item
+        \( F \), \( G \) -- cdfs for random variable \( X \) and \( X' \)
+        respectively
+    \item
+        \( X \stackrel{\mathcal{D}}{\le} X' \) -- \( G(x) \le F(x) \)
+        for \( x \in \Reals \) then \( X \) is said to be \defn{dominated
+        in distribution} by \( X' \)
+    \item
+        \( C \) -- \defn{coupling event}
+    \item
+        \( c = \sum\limits_{x \in E} \inf_{\nu \in \mathbb{I}} p_\nu(x) \)
+\end{enumerate}
+
+\visual{Mathematical Ideas}{../../../../CommonInformation/Lessons/mathematicalideas.png}
+\section*{Mathematical Ideas}
+
+\emph{Coupling} means the joint construction of two or more random
+variables or processes to deduce properties of the individual variables
+or gain insight into distributional similarities or relations between
+them.
+
+\subsection*{Introduction to Coupling}
+
+\begin{definition}
+    A \defn{copy}%
+    \index{copy}
+    of a random variable \( X \) is a random variable \( \hat{X} \) with
+    the same distribution as \( X \), \( X \disteq \hat{X} \).  A \defn{coupling}
+    of a collection of random variables \( X_\nu \), where \( \nu \) is
+    from some index set \( \mathbb{I} \), is a similarly indexed set \(
+    (\hat{X}_\nu) \) such that \( X_{\nu} \disteq \hat{X}_{\nu} \) for
+    each \( \nu \).  The copies \( (\hat{X}_\nu) \) are written in
+    parentheses to indicate the \( \hat{X}_\nu \) random variables have
+    a joint distribution.  The definition does \emph{not} require that
+    the joint distribution of \( (\hat{X}_{\nu}) \) is the same as the
+    joint distribution of the \( X_{\nu} \).  In fact, it is not even
+    required that a joint distribution of the \( X_{\nu} \) be
+    specified.  A simple and often useful coupling of \( X_{\nu} \) is \(
+    (\hat{X}_\nu) \) with the \( \hat{X}_{\nu} \) independent of each
+    other, called the \defn{independence coupling}.
+\end{definition}
+\index{coupling}
+\index{coupling!independence}%
+\index{coupling!self-coupling}
+\index{independence coupling}
+
+\begin{remark}
+    Another way to describe the coupling of \( X_\nu \), where \( \nu \)
+    is from some index set \( \mathbb{I} \), is a similarly indexed set \(
+    (\hat{X}_\nu) \) with the marginal distribution of each \( \hat{X}'_
+    {\nu} \) the same as the distribution of \( X_{\nu} \).  Thus, the
+    independence coupling is a valid coupling.
+
+    A coupling has fixed marginal distributions given by the \( X_\nu \).
+    The goal is to find the joint distribution for the coupled variables
+    that satisfies desired properties for proving a theorem or
+    relationship.  Many special kinds of couplings exist and are
+    commonly used for proofs.  The independence coupling is the first
+    such special coupling.  The propositions below exhibit several other
+    specific kinds of couplings.
+\end{remark}
+
+Simple preliminary examples of coupling for random variables illustrate
+the usefulness of coupling.  A last example of random variable coupling
+provides a proof of convergence of a family of Binomial random variables
+to a Poisson distribution.
+
+\begin{definition}
+    A \defn{self-coupling} of a random variable \( X \) is a family \( (\hat
+    {X}_\nu) \) where each \( \hat{X}_\nu \) is a copy of \( X \).  As a
+    special case of the independence coupling, an \defn{i.i.d.\ coupling}
+    consists of independent copies of \( X \).
+\end{definition}
+
+\begin{proposition}
+    For every random variable and nondecreasing bounded functions \( f \)
+    and \( g \), the random variables \( f(X) \) and \( g(X) \) are
+    positively correlated,
+    \[
+        \Cov{f(X)}{g(X)} \ge 0.
+    \]
+\end{proposition}
+
+\begin{proof}
+    \begin{enumerate}
+        \item
+            Let \( X' \) be an \emph{independent} copy of \( X \).
+        \item
+            The additivity of covariance shows
+            \begin{multline*}
+                \Cov{f(X)- f(X')}{g(X)-g(X')} = \\
+                \Cov{f(X)}{g(X)} - \Cov{f(X)}{g(X')} - \Cov{f(X')}{g(X)}
+                + \Cov{f(X')}{g(X')}.
+            \end{multline*}
+        \item
+            Since \( X \) and \( X' \) are independent, \( \Cov{f(X)}{g(X')}
+            = \Cov{f(X')}{g(X)} = 0 \).  Since \( X \) and \( X' \) have
+            the same distribution, \( \Cov{f(X)}{g(X)} = \Cov{f(X')}{g(X')}
+            \).
+        \item
+            Thus
+            \[
+                \Cov{f(X)}{g(X)} = \frac{1}{2} \Cov{f(X)- f(X')}{g(X)-g(X')}.
+            \]
+        \item
+            Since \( \E{f(X)- f(X')} = \E{g(X)-g(X')} = 0 \),
+            \[
+                \Cov{f(X)- f(X')}{g(X)-g(X')} = \E{(f(X)- f(X'))(g(X)-g(X'))}.
+            \]
+        \item
+            Since \( f \) and \( g \) are nondecreasing, \( f(x) - f(y) \)
+            and \( g(x) - g(y) \) have the same sign for any \( x \) and
+            \( y \), so \( \E{(f(X)- f(X'))(g(X)-g(X'))} > 0 \).
+    \end{enumerate}
+\end{proof}
+
+\begin{remark}
+    Couplings are useful because a comparison between distributions is
+    reduced to a comparison between random variables.  The next few
+    propositions illustrate the idea.
+\end{remark}
+
+\begin{definition}
+    Let \( X \) be a random variable with cdf \( F \) and \( X' \) be
+    another random variable with cdf \( G \).  If \( G(x) \le F(x) \)
+    for \( x \in \Reals \) then \( X \) is said to be \defn{dominated in
+    distribution} by \( X' \), denoted by \( X \stackrel{\mathcal{D}}{\le}
+    X' \).  See the schematic diagram in Figure~%
+    \ref{fig:introcoupling:ptwisedom}.
+\end{definition}
+
+Let \( X \) be a random variable with cdf \( F \) and \( X' \) be
+another random variable with cdf \( G \).  If there is a coupling \( (\hat
+{X}, \hat{X}') \) such that \( \hat{X} \) is \emph{pointwise dominated}
+by \( \hat{X}' \), that is, \( \hat{X} \le \hat{X}' \), then \( [\hat{X}'
+\le x] \subset [\hat{X} \le x] \), which implies \( \Prob{\hat{X}' \le x}
+\le \Prob{\hat{X} \le x} \) and thus \( G(x) \le F(x) \) for \( x \in
+\Reals \).
+
+\begin{proposition}
+    Let \( X \) and \( X' \) be random variables.  Then \( X \stackrel{\mathcal
+    {D}}{\le} X' \) if and only if there is a coupling \( (X,X') \) such
+    that \( \hat{X} \le \hat{X}' \).  In words, \( X \) is dominated in
+    distribution by \( X' \) if and only there is a coupling such that \(
+    \hat{X} \) is \emph{pointwise dominated} by \( \hat{X}' \).
+\end{proposition}
+
+\begin{proof}
+    \begin{enumerate}
+        \item
+            Let \( U \) be the uniform random variable on \( [0,1] \).
+            Then the random variable \( \hat{X} = F^{-1}(U) \) is a copy
+            of \( X \).  Likewise \( \hat{X}' = G^{-1}(U) \) is a copy
+            of \( X' \).  As a side remark, this is called the \emph{quantile
+            coupling}.%
+            \index{quantile coupling}
+            \index{coupling!quantile}
+        \item
+            Because \( G(x) \le F(x) \), \( u \le G(x) \) implies \( u
+            \le F(x) \).
+        \item
+            Thus \( \setof{x \in \Reals}{u \le G(x)} \subset \setof{x
+            \in \Reals}{u \le F(x)} \).
+        \item
+            Thus \( F^{-1}(u) \le G^{-1}(u) \), so \( F^{-1}(U) \le G^{-1}
+            (U) \).  See the schematic diagram in Figure~%
+            \ref{fig:introcoupling:ptwisedom}.
+        \item
+            The steps of the proof are reversible, proving the ``if and
+            only if''.
+    \end{enumerate}
+\end{proof}
+
+\begin{figure}
+    \centering
+\begin{asy}
+import graph;
+
+size(5inches);
+
+real myfontsize = 12;
+real mylineskip = 1.2*myfontsize;
+pen mypen = fontsize(myfontsize, mylineskip);
+defaultpen(mypen);
+
+real PI = 4*atan(1);
+real mu = 2;
+real xlo = -1;
+real xhi = 3;
+real ylo = -0.2;
+real yhi = 1.2;
+
+real F(real x) {return 1/2 + (1/PI)*atan(x);}
+real G(real x) {return 1/2 + 1/2*erf( (x - mu)/sqrt(2) );}
+
+axes(xlabel=Label("$x$", N), ylabel="",
+     min=(xlo, ylo), max=(xhi, yhi), arrow=Arrow);
+yequals(1, xmin=xlo, xmax=xhi, p=dashed);
+
+draw(graph(F, xlo, xhi, operator ..), red);
+label("$F(x)$", (1,F(1)), NW, red);
+draw(graph(G, xlo, xhi, operator ..), blue);
+label("$G(x)$", (1.5,G(1.5)), NW, blue);
+
+label("$1$", (0,1), NW);
+
+real U = 0.6;
+label("$U$", (0,U), NW);
+draw((0, U)--(xhi, U), dotted);
+
+real FinvU = tan(0.1 * PI);
+real redlo = -0.05;
+dot((FinvU, F(FinvU)), red);
+draw( (FinvU, F(FinvU))--(FinvU, redlo), dashed+red);
+dot("$\hat{X}$", (FinvU, redlo), S, red);
+draw( (FinvU, redlo)--(xhi, redlo), dashed+red);
+
+real GinvU = mu + sqrt(2) * 0.1792;
+real bluelo = -0.1;
+dot((GinvU, G(GinvU)), blue);
+draw( (GinvU, G(GinvU))--(GinvU, bluelo), dashed+blue);
+dot("$\hat{X}'$", (GinvU, bluelo), S, blue);
+draw( (GinvU, bluelo)--(xhi, bluelo), dashed+blue);
+\end{asy}
+    \caption{Schematic diagram of domination in distribution, pointwise
+    domination and quantile coupling.}%
+    \label{fig:introcoupling:ptwisedom}
+\end{figure}
+
+\begin{remark}
+    The theorem and its proof show that quantile coupling turns
+    domination in distribution into pointwise domination and vice versa.
+    Arguments using point domination are easier than using domination in
+    distribution.  The following corollary is an example, since the
+    distribution of a sum, as a convolution of distributions, is harder
+    to use than a sum of random variables.
+\end{remark}
+
+\begin{corollary}
+    \label{cor:introcoupling:couplingsum} Let \( X_1 \), \( X_2 \), \( X_1'
+    \), \( X_2' \) be random variables such that:
+    \begin{enumerate}
+        \item
+            \( X_1 \) and \( X_2 \) are independent,
+        \item
+            \( X_1' \) and \( X_2' \) are independent,
+        \item
+            \( X_1\stackrel{\mathcal{D}}{\le} X_1' \) and \( X_2\stackrel
+            {\mathcal{D}}{\le} X_2' \).
+    \end{enumerate}
+    Then \( X_1 + X_2 \stackrel{\mathcal{D}}{\le} X_1' + X_2' \).
+\end{corollary}
+
+\begin{proof}
+    \begin{enumerate}
+        \item
+            Using the Proposition, let \( (\hat{X}_1, \hat{X}_1') \) be
+            a coupling of \( X_1 \) and \( X_1' \) such that \( \hat{X}_1
+            \stackrel{\mathcal{D}}{\le} hat{X}_1' \).
+        \item
+            Likewise, let \( (\hat{X}_2, \hat{X}_2') \) be a coupling of
+            \( X_2 \) and \( X_2' \) such that \( \hat{X}_1 \stackrel{\mathcal
+            {D}}{\le} hat{X}_1' \).
+        \item
+            Let \( (\hat{X}_1, \hat{X}_1') \) and \( (\hat{X}_2, \hat{X}_2')
+            \) be independent.
+        \item
+            Then by definition of having the same distributions, \( (\hat
+            {X}_1 + \hat{X}_2, \hat{X}_1' + \hat{X}_2') \) is a coupling
+            of \( X_1 + X_2 \) and \( X_1' + X_2' \).  The independence
+            of \( (\hat{X}_1, \hat{X}_1') \) and \( (\hat{X}_2, \hat{X}_2')
+            \) makes it easy to show that \( \hat{X_1} + \hat{X_2} \le
+            \hat{X_1'} + \hat{X_2'} \).
+        \item
+            By the Proposition, this implies \( X_1 + X_2 \stackrel{\mathcal
+            {D}}{\le}X_1 ' + X_2' \).
+    \end{enumerate}
+\end{proof}
+
+A simple but general and useful tool for coupling is the following
+theorem.
+
+\begin{theorem}[Coupling Inequality]
+    \index{Coupling Inequality}
+    Let \( X \) and \( Y \) be \( 2 \) random variables, each with its
+    own distribution.  Then for any subset \( A \)
+    \[
+        \abs{\Prob{X \in A} - \Prob{Y \in A}} \le \Prob{X \ne Y}.
+    \]
+\end{theorem}
+\index{Coupling Inequality}
+
+\begin{proof}
+    \begin{enumerate}
+        \item
+            First
+            \begin{multline*}
+                \abs{\Prob{X \in A} - \Prob{Y \in A}} = \\
+                \abs{\Prob{X \in A, X = Y} + \Prob{X \in A, X \ne Y}} -
+                \abs{\Prob{Y \in A, X = Y} - \Prob{Y \in A, X \ne Y}}.
+            \end{multline*}
+        \item
+            But \( \Prob{X \in A, X = Y} = \Prob{Y \in A, X = Y} \)
+            since both are the same event, so the two terms cancel.
+        \item
+            Since \( 0 \le \Prob{X \in A, X \ne Y} \le \Prob{X \ne Y} \)
+            and \( 0 \le \Prob{Y \in A, X \ne Y} \le \Prob{X \ne Y} \),
+            the difference of the two probabilities must be less or
+            equal to \( \Prob{X \ne Y} \).
+        \item
+            In summary
+            \[
+                \abs{\Prob{X \in A} - \Prob{Y \in A}} \le \Prob{X \ne Y}.
+            \]
+    \end{enumerate}
+\end{proof}
+
+\begin{proposition}[Optimal Coupling Equality]
+    Let \( X \) and \( Y \) be \( 2 \) random variables, each with its
+    own distribution.  Then for any subset \( A \)
+    \[
+        \|
+        \operatorname{dist}
+        {X} -
+        \operatorname{dist}
+        {Y} \|_{TV} = \inf \setof{\Prob{X \ne Y}}{(X,Y) \text{ is a
+        coupling of } X,Y }.
+    \] and there is a coupling of \( (X,Y) \) achieving this minimum.
+\end{proposition}
+
+\begin{definition}
+    The coupling of \( (X,Y) \) achieving this minimum is the \defn{optimal
+    coupling}.
+\end{definition}
+
+\begin{proof}
+    \begin{enumerate}
+        \item
+            It immediately follows from the definition of the total
+            variation distance and the coupling inequality that
+            \[
+                \|
+                \operatorname{dist}
+                {X} -
+                \operatorname{dist}
+                {Y} \|_{TV} = \inf\Prob{X \ne Y}.
+            \]
+        \item
+            Let
+            \[
+                p = \sum{\nu \in \mathcal{X}} \min{\Prob{X=\nu}, \Prob{Y=\nu}}.
+            \]
+        \item
+            Write
+            \[
+                \sum{\nu \in \mathcal{X}} \min{\Prob{X=\nu}, \Prob{Y=\nu}}
+                = \sum_{\nu \in \mathcal{X}, \Prob{X=\nu} \le \Prob{Y=\nu}}
+                \Prob{X=\nu} + \sum_{\nu \in \mathcal{X}, \Prob{X=\nu} >
+                \Prob{Y=\nu}} \Prob{Y=\nu}.
+            \]
+        \item
+            Adding and subtracting \( \sum_{\nu \in \mathcal{X}, \Prob{X=\nu}
+            > \Prob{Y=\nu}} \Prob{X=\nu} \) gives
+            \[
+                \sum{\nu \in \mathcal{X}} \min{\Prob{X=\nu}, \Prob{Y=\nu}}
+                = 1 - \sum_{\nu \in \mathcal{X}, \Prob{X=\nu} > \Prob{Y=\nu}}
+                [\Prob{X = \nu} - \Prob{Y=\nu}].
+            \]
+        \item
+            From one of the equivalent definitions of the total
+            variation metric
+            \[
+                \sum{\nu \in \mathcal{X}} \min{\Prob{X=\nu}, \Prob{Y=\nu}}
+                = 1 - \|
+                \operatorname{dist}
+                {X} -
+                \operatorname{dist}
+                {Y} \|_{TV} = p.
+            \]
+        \item
+            Flip a coin with probability of heads equal to \( p \).
+            \begin{enumerate}
+                \item
+                    If the coin comes up heads, then choose a random
+                    value \( Z \) according to the probability
+                    distribution
+                    \[
+                        \gamma_{3}(\nu) = \frac{\min{\Prob{X=\nu}, \Prob
+                        {Y=\nu}}}{p}
+                    \] and set \( X = Y = Z \).
+                \item
+                    If the coin comes up tails, choose \( X \) according
+                    to the probability distribution
+                    \[
+                        \gamma_{1}(\nu) =
+                        \begin{cases}
+                            \frac{\Prob{X = \nu} - \Prob{Y = \nu}}{\|
+                            \operatorname{dist}
+                            {X} -
+                            \operatorname{dist}
+                            {Y} \|_{TV}} & \Prob{X = \nu} > \Prob{y =
+                            \nu}\\
+                            & \text{otherwise}
+                        \end{cases}
+                    \] and independently choose \( Y \) according to the
+                    probability distribution
+                    \[
+                        \gamma_{2}(\nu) =
+                        \begin{cases}
+                            \frac{\Prob{Y = \nu} - \Prob{X = \nu}}{\|
+                            \operatorname{dist}
+                            {X} -
+                            \operatorname{dist}
+                            {Y} \|_{TV}} & \Prob{Y = \nu} > \Prob{X =
+                            \nu}\\
+                            0 & \text{otherwise}.
+                        \end{cases}
+                    \]
+            \end{enumerate}
+        \item
+            By construction \( \gamma_1 \) and \( \gamma_2 \) are
+            probability distributions and
+            \begin{align*}
+                p \gamma_3 + (1 -p) \gamma_1 &=
+                \operatorname{dist}
+                (X), \\
+                p \gamma_3 + (1 -p) \gamma_2 &=
+                \operatorname{dist}
+                (Y).  \\
+            \end{align*}
+        \item
+            In the case that the coin lands tails, \( X \ne Y \) since \(
+            \gamma_1 \) and \( \gamma_2 \) are positive on dijoint
+            subsets of \( \mathcal{X} \).
+        \item
+            Thus \( X = Y \) if and only if the coin toss is heads.  The
+            conclusion is that \( \Prob{X \ne Y} = \|
+            \operatorname{dist}
+            (X) -
+            \operatorname{dist}
+            (Y)\|_ {TV} \).
+    \end{enumerate}
+\end{proof}
+
+\begin{remark}
+    Couplings are useful because a comparison between distributions is
+    reduced to a comparison between random variables.  For example, the
+    total variation distance \( \|
+    \operatorname{dist}
+    (X) -
+    \operatorname{dist}
+    (Y) \|_{TV} \) is the minimum, over all couplings \( (\hat{X}, \hat{Y}
+    ) \) of \( X \) and \( Y \), of the probability that \( X \) and \(
+    Y \) are different.  This provides an effective method of obtaining
+    upper bounds on the total variation distance.
+\end{remark}
+
+A more general version of the optimal coupling theorem is the following.
+
+\begin{definition}
+    Suppose \( (\hat{X}_{\nu}) \) is a coupling of random variables \( X_
+    {\nu} \) for \( \nu \) in some index set \( \mathbb{I} \).  If
+    \[
+        C \subset [ \hat{X}_i = \hat{X}_j] \text{ for all } i,j
+    \] then \( C \) is \defn{coupling event}.
+\end{definition}
+\index{coupling event}
+
+The following lemmas establish the usefulness of the coupling event.
+
+\begin{lemma}[Discrete Variable Coupling Event Inequality]
+    If \( C \) is a coupling event of a family of discrete random
+    variables \( X_{\nu} \) taking values in a finite or countable set \(
+    E \), then
+    \[
+        \Prob{C} \le \sum\limits_{x \in E} \inf_{\nu \in \mathbb{I}} p_\nu
+        (x).
+    \]
+\end{lemma}
+
+\begin{proof}
+    \begin{enumerate}
+        \item
+            Since the random variables are discrete write \( \Prob{X_{\nu}
+            = x} = p_{\nu}(x) \) for the probability mass function.
+        \item
+            For all \( i, j \in \mathbb{I} \) and \( x \in E \)
+            \[
+                \Prob{\hat{X}_i = x, C} = \Prob{\hat{X}_j = x, C} \le p_j
+                (x).
+            \]
+        \item
+            For all \( i\in \mathbb{I} \) and \( x \in E \)
+            \[
+                \Prob{\hat{X}_i = x, C} \le \inf_{j \in \mathbb{I}} p_j(x).
+            \]
+        \item
+            Summing over \( E \) gives the inequality.
+    \end{enumerate}
+\end{proof}
+\index{Discrete Variable Coupling Event Inequality}
+
+\begin{definition}
+    A coupling with a coupling event \( C \) such that
+    \[
+        \Prob{C} = \sum\limits_{x \in E} \inf_{\nu \in \mathbb{I}} p_\nu
+        (x)
+    \] is a \defn{maximal coupling} and \( C \) is a \defn{maximal
+    coupling event}.
+\end{definition}
+
+\begin{lemma}
+    Suppose \( X_{\nu} \) is family of discrete random variables \( X_{\nu}
+    \) taking values in a finite or countable set \( E \).  Then there
+    exists a maximal coupling.
+\end{lemma}
+
+\begin{proof}
+    \begin{enumerate}
+        \item
+            From the Coupling Event Inequality, if \( C \) is a coupling
+            event of a family of discrete random variables \( X_{\nu} \)
+            taking values in a finite or countable set \( E \), then
+            \[
+                \Prob{C} \le \sum\limits_{x \in E} \inf_{\nu \in \mathbb
+                {I}} p_\nu(x).
+            \]
+        \item
+            Let \( c = \sum\limits_{x \in E} \inf_{\nu \in \mathbb{I}} p_\nu
+            (x) \).
+        \item
+            If \( c = 0 \), take the \( \hat{X}_{\nu} \) independent and
+            the coupling event \( C = \emptyset \).
+        \item
+            If \( c = 1 \), take the \( \hat{X}_{\nu} \) identical and
+            the coupling event \( C = \Omega \), the set of all
+            outcomes.
+        \item
+            If \( 0 < c < 1 \), mix these two couplings as follows:
+            \begin{enumerate}
+                \item
+                    \( I \), \( V \), \( W_{\nu} \), \( \nu \in \mathbb{I}
+                    \) are independent random variables with the
+                    following properties.
+                \item
+                    \( I \) is a \( 0 \) or \( 1 \) valued Bernoulli
+                    random variable, with success \( \Prob{I=1} = c \),
+                \item
+                    \( \Prob(V = x) = \inf_{\nu \in \mathbb{I}} p_{\nu}(x)/c
+                    \), for \( x \in E \),
+                \item
+                    \( \Prob{W_{\nu} = x} = (p_i(x) - \Prob{V=x})/(1-c) \),
+                    for \( x \in E \).
+            \end{enumerate}
+        \item
+            For \( \nu \in \mathbb{I} \)
+            \[
+                \hat{X}_{\nu} =
+                \begin{cases}
+                    V & \text{ if } I = 1.  \\
+                    W_{\nu} & \text{ if } I = 0.
+                \end{cases}
+            \]
+        \item
+            Then
+            \[
+                \Prob{\hat{X}_i = x} = \Prob{V = x}\Prob{I = 1} + \Prob{W_
+                {\nu} = x}\Prob{I = 0} = \Prob{X_{\nu} = x}.
+            \]
+        \item
+            Furthermore, \( C = [I = 1] \) is a coupling event and \(
+            \Prob{C} = \sum\limits_{x \in E} \inf_{\nu \in \mathbb{I}} p_\nu
+            (x) \).
+    \end{enumerate}
+\end{proof}
+
+\begin{example}
+    Consider \( n \) Bernoulli trials each with probability \( p \), or
+    equivalently a binomial distribution \(
+    \operatorname{Bin}
+    (n, p) \) where \( n \) is large and \( p \) is small with \( np =
+    \lambda \).  The Poisson approximation for the probability of \( X \)
+    successes is
+    \[
+        \Prob{X = k} = \binom{n}{k} p^k (1-p)^k \approx \EulerE^{-\lambda}
+        \frac{\lambda^k}{k!}
+    \] is useful.  More formally and generally, let \( X_1, \dots X_n \)
+    be independent Bernoulli, i.e. \( 0 \)--\( 1 \), random variables
+    with success \( \Prob{X_{\nu} = 1} = p_\nu \) where \( 0 \le p_\nu
+    \le 1 \).  Let \( S_n = X_1 + \cdots + X_n \) be the number of
+    successes.  If \( \sum{\nu=1}^n p_{\nu} \to \lambda \) while \( \max_
+    {1 \le \nu \le n} p_{\nu} \to 0 \), then \( S_{n}
+    \operatorname{dist}
+    to
+    \operatorname{Pois}
+    (\lambda) \).
+
+    The proof by maximal coupling is the following.  Let \( X_1', \dots,
+    X_n' \) be independent Poisson random variables with parameter \( p_
+    {\nu} \).  Recall that \( X_1' + \cdots + X_n' \) is Poisson with
+    parameter \( p_1 + \cdots + p_n = \lambda \).  Let \( (\hat{X}_1,
+    \hat{X}_1'), \dots (\hat{X}_n, \hat{X}_n') \) be independent pairs
+    such that for each \( \nu \in 1, \dots, n \), \( (\hat{X}_\nu, \hat{X}_\nu')
+    \) is a maximal coupling of \( X_{\nu} \) and \( X_{\nu}' \).  Put
+    \begin{align*}
+        \hat{X} &= \hat{X_1} + \cdots + \hat{X_n} \\
+        \hat{X'} &= \hat{X}_1' + \cdots + \hat{X}_n' \\
+    \end{align*}
+    so that by Lemma~%
+    \ref{cor:introcoupling:couplingsum}, \( (\hat{X}, \hat{X}') \) is a
+    coupling of \( X \) and \( X' \) and
+    \[
+        \Prob{\hat{X} \ne \hat{X}'} \le \Prob{\hat{X_{\nu}} \ne \hat{X}_
+        {\nu}' \text{ for some } \nu} \le \sum\limits_{1 \le \nu \le n}
+        \Prob{\hat{X}_{\nu} \ne \hat{X}_{\nu}'}.
+    \]
+
+    Standard inequalities estimate the sum.  Since \( 1 + x \le \EulerE^x
+    \) for all \( x \),
+    \[
+        \Prob{\hat{X}_{\nu}=0} = 1-p_{\nu} \le \EulerE^{-p_{\nu}} =
+        \Prob{\hat{X}_{\nu}'=0}.
+    \] Also,
+    \[
+        \Prob{\hat{X}_{\nu}=1} = p_{\nu} \ge p_{\nu}\EulerE^{-p_{\nu}} =
+        \Prob{\hat{X}_{\nu}'=1}.
+    \] Because the coupling is maximal,
+    \[
+        \Prob{\hat{X}_{\nu} = \hat{X}_{\nu}} = \min( \Prob{X_{\nu}=0},
+        \Prob{X_{\nu}=0}) + \min( \Prob{X_{\nu}=1}, \Prob{X_{\nu}=1}) =
+        1 - p_{\nu} + p_{\nu} \EulerE^{-p_{\nu}}.
+    \] Again \( 1-p_{\nu} \le \EulerE^{-p_{\nu}} \), so \( \Prob{X = X'}
+    \ge 1- p_{\nu}^2 \) and \( \Prob{X \ne X'} \le p_{\nu}^2 \).  Then
+    by the Coupling Inequality the Total Variation distance is less than
+    \( \sum\limits_{\nu=1}^n p_n^2 \).
+
+    The simplest case is that \( p_\nu \equiv \lambda/n \) with \( np_{n}
+    = \lambda \).  Then
+    \[
+        \|
+        \operatorname{Bin}
+        (n,p) -
+        \operatorname{Pois}
+        (\lambda) \|_{TV} < np^2 = \lambda^2/n.
+    \] Since convergence in Total Variation distance implies convergence
+    in distribution the conclusion follows.  A proof of the same result
+    using characteristic functions is in
+    \cite[Section 9.4]{breiman92} and
+    \cite[Section XI.6]{feller73} has a proof using generating
+    functions.  Both proofs also depend on the inequality \( 1 + x
+    \EulerE^x \) for all \( x \).
+
+\end{example}
+
+\subsubsection*{Maximal Coupling for Continuous Random Variables}
+
+This section is the continuous analog of the Coupling Inequality and
+maximal coupling for discrete random variables covered previously.  Make
+the simplifying assumptions that the index set \( \mathbb{I} \) is
+finite or countable and that each \( X_{\nu} \) has density \( f_{\nu} \)
+so that \( \Prob{X_{\nu} \in A} = \int_A f_{\nu}(x) \df{x} \).
+
+Suppose \( (\hat{X}_{\nu}) \) is a coupling of \( X_{\nu} \) for \( \nu
+\in \mathbb{I} \) and \( C \) is a coupling event.  Then for intervals \(
+A \) and \( i,j \in \mathbb{I} \),
+\[
+    \Prob{\hat{X}_{i} \in A \intersect C} = \Prob{\hat{X}_{j} \in A
+    \intersect C} \le \int_A f_{j}(x) \df{x}.
+\] In the case of finite index set \( \mathbb{I} \), define a partition
+of \( \Reals \) by
+\[
+    A_1 = \set{x \in \Reals}{f_1(x) = \inf_{1 \le \nu \le n} f_\nu(x)}
+\] and recursively for \( 1 < k \le n \),
+\[
+    A_k = \set{x \in \Reals}{f_k(x) = \inf_{{1 \le \nu \le n}} f_\nu(x)}
+    \setminus (A_1 \union \cdots \union A_{k-1}).
+\] Then
+\[
+    \Prob{\hat{X}_{i} \in (A \intersect A_{k})\intersect C} \le \int_{A
+    \intersect A_k} f_{j}(x) \df{x} \le \int_{A \intersect A_k} f_{j}(x)
+    \inf_{1 \le \nu \le n} f_\nu(x) \df{x}
+\] where the equality follows from the definition of \( A_k \).  Summing
+over \( k \in \mathbb{I} \) to obtain the finite case of the Coupling
+Event Inequality%
+\index{Coupling Event Inequality}
+\[
+    \Prob{\hat{X}_{i} \in A \intersect C} \le \int_A \inf_{\nu \in
+    \mathbb{I} f_{\nu}}.
+\]
+
+In the countable index set case, fix \( n < \infty \) and use the finite
+case of the Coupling Event Inequality.  Letting \( n \to \infty \) gives
+\[
+    \Prob{\hat{X}_{i} \in A \intersect C} \le \int_A \inf_{\nu \in
+    \mathbb{I}} f_{\nu}
+\] because \( \inf_{1 \le \nu \le n} f_{\nu} \) decreases to \( \inf_{\nu
+\in \mathbb{I}} f_{\nu} \).  This establishes in either the finite or
+countable index set case the Coupling Event Inequality.%
+\index{Coupling Event Inequality}
+\[
+    \Prob{\hat{X}_{i} \in A \intersect C} \le \int_A \inf_{\nu \in
+    \mathbb{I} f_{\nu}}.
+\]
+
+\begin{theorem}
+    Suppose \( X_1, X_2, \dots \) (or \( X_1, X_2, \dots, X_n \)) are
+    continuous random variable with densities \( f_1, f_2, \dots \) (or \(
+    f_1, f_2, \dots, f_n \)).  Then there exists a maximal coupling with
+    coupling event \( C \) such that \( \Prob{C} = \inf_\nu f_\nu(x) \df
+    {x} \).
+\end{theorem}
+
+\begin{proof}
+    \begin{enumerate}
+        \item
+            The proof follows the construction of the maximal coupling
+            for discrete random variables with modifications for the
+            densities instead of discrete probabilities.
+        \item
+            Let \( c = \int \inf_{\nu \in \mathbb{I}} f_\nu(x) \df{x} \).
+        \item
+            If \( c = 0 \), take the \( \hat{X}_{\nu} \) independent and
+            the coupling event \( C = \emptyset \).
+        \item
+            If \( c = 1 \), take the \( \hat{X}_{\nu} \) identical and
+            the coupling event \( C = \Omega \), the set of all
+            outcomes.
+        \item
+            If \( 0 < c < 1 \), mix these two couplings as follows:
+            \begin{enumerate}
+                \item
+                    \( I \), \( V \), \( W_{\nu} \), \( \nu \in \mathbb{I}
+                    \) are independent random variables.
+                \item
+                    \( I \) is a \( 0 \) or \( 1 \) valued Bernoulli
+                    random variable, with success \( \Prob{I=1} = c \),
+                \item
+                    \( V \) has density \( \inf_{\nu \in \mathbb{I}} f_{\nu}
+                    (x)/c \),
+                \item
+                    \( W_j \) has density \( f_j(x) - \inf_{\nu \in
+                    \mathbb{I}}/(1-c) \),
+            \end{enumerate}
+        \item
+            For \( \nu \in \mathbb{I} \)
+            \[
+                \hat{X}_{\nu} =
+                \begin{cases}
+                    V & \text{ if } I = 1.  \\
+                    W_{\nu} & \text{ if } I = 0.
+                \end{cases}
+            \]
+        \item
+            Then
+            \[
+                \Prob{\hat{X}_i \in A} = \Prob{V \in A}\Prob{I = 1} +
+                \Prob{W_{i} \in A}\Prob{I = 0} = \Prob{X_{i} \in A}.
+            \]
+        \item
+            \( C = [I = 1] \) is a coupling event and \( \Prob{C} = \int_
+            {C} \inf_{\nu \in \mathbb{I}} f_{\nu}(x) \df{x} \) is the
+            value.
+    \end{enumerate}
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Rewrite things below this level
+
+\begin{remark}
+    Couplings are useful because a comparison between distributions is
+    reduced to a comparison between random variables.  For example, the
+    total variation distance \( \| \mathcal{L}(X) - \mathcal{L}(Y) \|_{TV}
+    \) is the minimum, over all couplings \( (\hat{X}, \hat{Y} ) \) of \(
+    X \) and \( Y \) of the probability that \( X \) and \( Y \) are
+    different.  This provides an effective method of obtaining upper
+    bounds on the total variation distance.
+\end{remark}
+
+\begin{remark}
+    Sometimes it is more convenient to refer to coupling of probability
+    distributions, pushing the corresponding random variables to the
+    background.
+\end{remark}
+
+\subsection*{Distance from Stationarity}
+
+This section is preliminary notation and definitions for later theorems.
+
+Let \( d(t)= \max_{x \in \mathcal{X}} \| P^t(x,\cdot) - \pi \|_{TV} \).
+Let \( \bar{d(t)}= \max_{x,y \in \mathcal{X}} \| P^t(x,\cdot) - P^t(y,\cdot)
+\|_{TV} \).
+
+\begin{lemma}
+    \[
+        d(t) \le \bar{d}(t) \le 2 d(t).
+    \]
+\end{lemma}
+
+\begin{proof}
+    \begin{enumerate}
+        \item
+            From the triangle inequality, \( \bar{d}(t) \le 2 d(t) \).
+        \item
+            To show \( d(t) \le \bar{d}(t) \), note first that since \(
+            \pi \) is stationary
+            \[
+                \sum_{y \in \mathcal{C}} \pi(y) P^t(y,A) = \pi(A)
+            \] for any set \( A \).
+        \item
+            Then
+            \begin{align*}
+                \abs{ P^t(x,A) - \pi(A)} &= \abs{\sum_{y \in \mathcal{C}}
+                \pi(y) \left[ P^t(x,A) - P^t(y,A) \right]} \\
+                &\le \sum_{y \in \mathcal{C}} \pi(y) \| P^t(x,A) - P^t(y,A)
+                \|_{TV} \\
+                &\le \bar{d}(t)
+            \end{align*}
+            by the Triangle Inequality and the definition of total
+            variation.
+        \item
+            Maximizing over the left side in \( x \) and \( A \) gives \(
+            d(t) \le \bar{d}(t) \).
+    \end{enumerate}
+\end{proof}
+
+\begin{lemma}
+    The function \( \bar{d} \) is submultiplicative,
+    \[
+        \bar{d}(s + t) \le \bar{d}(s) \bar{d}(t).
+    \]
+\end{lemma}
+
+\begin{proof}
+    \begin{enumerate}
+        \item
+            Fix \( x, y \in \mathcal{X} \).
+        \item
+            Let \( (X_s, Y_s) \) be the optimal coupling of \( P^s(x,
+            \cdot) \) and \( P^s(y, \cdot) \).
+        \item
+            \label{enum:coupling:coupineq} Hence \( \| P^s(x,\cdot) - P^s
+            (y,\cdot) \|_{TV} = \Prob{X_s \ne Y_s} \).
+        \item
+            Then
+            \[
+                P^{s+t}(x,w) = \sum_{\nu} \Prob{X_s = z}P^t(z,w) = \E{P^t
+                (X_s, w)}.
+            \]
+        \item
+            For set \( A \), summing over \( w \in A \) shows
+            \begin{multline*}
+                P^{s+t}(x,A) - P^{s+t}(y,A) = \E{P^t(x,A) - P^t(y,A)} \\
+                \le \E{\bar{d}(t)(\indicator{X_s \ne Y_s}{\cdot})} =
+                \Prob{X_s \ne Y_s} \bar{d}(t).
+            \end{multline*}
+        \item
+            Then using step~%
+            \ref{enum:coupling:coupineq}, the right side is at most \(
+            \bar{d}(s) \bar{d}(t) \).
+    \end{enumerate}
+\end{proof}
+
+\begin{corollary}
+    If \( \ell \) is a positive integer \( d(\ell t_{text{mix}}(\epsilon))
+    \le \lceil \log_{2} \epsilon^{-1} \rceil t_{\text{mix}} \).
+\end{corollary}
+
+\begin{proof}
+    \begin{enumerate}
+        \item
+            \( d(\ell t_{\text{mix}}(\epsilon)) \le \bar{d}(t_{\text{mix}}
+            (\epsilon))^{\ell} \le (2\epsilon)^{\ell} \).
+        \item
+            Taking \( \epsilon = 1/4 \), \( d(\ell t_{\text{mix}}) \le 2^
+            {-\ell} \).
+        \item
+            Additionally \( d(\ell t_{text{mix}}(\epsilon)) \le \lceil
+            \log_{2} \epsilon^{-1} \rceil t_{\text{mix}} \).
+    \end{enumerate}
+\end{proof}
+
+\subsection*{Coupling for Markov Chains}
+
+A simple motivational example introduces coupling of Markov chains.
+
+\begin{example}
+    Consider the Markov chain which is the absorbing symmetric random
+    walk on \( [0,1,2,\dots, n] \).  It seems reasonable to conjecture
+    that if \( x < y \), then \( P^t(x,n) \le P^t(y, n) \).  That is,
+    the chance of being at the upper absorbing boundary \( n \) after \(
+    t \) steps does not decrease as the starting position increases.
+
+    A simple proof uses a coupling of the distributions \( P^t(x, \cdot)
+    \) and \( P^t(y, \cdot) \).  Let \( \Delta_1, \Delta_2, \dots \) be
+    a sequence of i.i.d.\ Bernoulli random variables taking values \( -1
+    \) with probability \( 1/2 \) and \( +1 \) with probability \( 1/2 \).
+    Define two random walks on \( [0, 1, \dots, n] \), the walk \( (X_t)
+    \) starts at \( x \), while the walk \( (Y_{t}) \) starts at \( y \).
+    Both walks \( (X_t) \) and \( (Y_t) \) move in parallel:  if \(
+    \Delta_t = +1 \), move each walk up if possible, and if \( \Delta_t
+    = -1 \), move each walk down if possible.  If the two walks meet,
+    necessarily either at \( 0 \) or \( n \), they stay together
+    thereafter.  The transition probability matrix \( P \) is an \( (n+1)
+    \times (n+1) \) tridiagonal matrix with \( 1/2 \) on the sub- and
+    super-diagonals, \( 1 \) at the ends of the main diagonal and \( 0 \)
+    elsewhere.  The distribution of \( X_t \) is \( P^t(x, \cdot) \),
+    and the distribution of \( Y_t \) is \( P^t(y, \cdot) \).
+    Importantly, \( X_t \) and \( Y_t \) are defined on the same
+    underlying probability space, as both walks use the sequence \( (\Delta_t)
+    \) to determine their moves.  Note that if \( x \le y \) then \( X_t
+    \le Y_t \) for all \( t \) In particular, if \( X_t = n \) then it
+    must be that \( Y_t = n \) also.  Conclude that \( P^t(x, n) = \Prob
+    {X_t = n} \le \Prob{Y_t = n} = P^t(y, n) \).  This argument shows
+    how to use coupling to couple together the two walks in such a way
+    that \( X_t \le Y_t \) pointwise and for all \( t \) and from this
+    fact about the random variables it is easy to gain information about
+    the distributions.
+\end{example}
+
+Building two simultaneous copies of a Markov chain using a common source
+of randomness, as in the previous example, can be useful for getting
+bounds on the distance to stationarity.
+
+\begin{definition}
+    Define a \defn{coupling} of Markov chains with transition matrix \(
+    P \) to be a process \( (X_t, Y_t) \) for \( t = 0, 1,2,3, \dots \)
+    so that both \( (X_t) \) and \( (Y_t) \) are Markov chains with
+    transition matrix \( P \), although the two chains may have different
+    starting distributions.
+\end{definition}
+\index{coupling!Markov chains}
+\index{Markov chain coupling}
+
+\begin{definition}
+    Given a Markov chain on \( \mathcal{X} \) with transition matrix
+    \( P \), a \defn{Markovian coupling} of two \( P \)-chains is a Markov chain
+    \( (X_t, Y_t) \) for \( t=1, 2, 3, \dots \) with state space \( \mathcal{X}
+    \times \mathcal{X}\) satisfying, for all \(x\), \(y\), \(x'\), \(y'\)
+    \begin{align*}
+        \Prob{X_{t+1} = x' \given X_t = x, Y_t = y} &= P(x,x') \\
+        \Prob{Y_{t+1} = y' \given Y_t = y, X_t = x} &= P(y,y') \\
+    \end{align*}
+\end{definition}
+\index{coupling!Markovian}
+\index{Markovian coupling}
+
+Not every coupling is a Markovian coupling, as the following example
+shows.
+\begin{example}
+    Let \( \mathcal{X} = \set{0,1}\) and consider the probability
+    transition matrix on \( \mathcal{X} \)
+    \[
+        P =
+        \begin{pmatrix}
+            1/2 & 1/2 \\
+            1/2 & 1/2 \\
+        \end{pmatrix}
+        .
+    \] Let \( (Y_t) \) for \( t = 0,1,2, \dots \) be a Markov chain with
+    transition matrix \( P \) started in the two states determined by a
+    fair coin toss.  Let \( X_0 = 0 \) and \( X_{t+1} = Y_t \) for \(
+    t=0, 1, 2, \dots \) It is an exercise to show that \( (X_t, Y_t) \)
+    is a coupling, and the sequence \( (X_t, Y_t) \) is a Markov chain
+    but it is not a Markovian coupling.
+\end{example}
+
+If \( (X_t) \) and \( (Y_t) \) are coupled Markov chains with \( X_0 = x
+\) and \( Y_0 = y \) then use \( \Probsub{x,y}{\cdot} \) for the
+probability on the space where \( (X_t) \) and \( (Y_t) \) are both
+defined.
+
+\begin{definition}
+    Let \( X' \) be a differently started independent version of \( X \)
+    that is, \( X' \) independent of \( X \) and has the same transition
+    probability matrix but another initial distribution.  Let \( \tau_{\text
+    {coal}} \in [1, \infty] \) be the first time the chains meet, that
+    is
+    \[
+        \tau_{\text{coal}} = \min \setof{t}{X_s = Y_s}.
+    \] The time \( \tau_{coal} \) is called the \defn{coalescence time},
+    the \defn{coupling time} or the \defn{coupling epoch}.
+\end{definition}
+\index{coupling time}
+\index{coupling epoch}
+
+\begin{definition}
+    Let \( X'' \) the process that follows the path of \( X' \) up to \(
+    \tau_ {coal} \) and then switches to \( X \)
+    \[
+        X_t'' =
+        \begin{cases}
+            X_t' & t < \tau_{coal} \\
+            X_t & t \ge \tau_{coal}.  \\
+        \end{cases}
+    \] By the Markov property, at time \( \tau_{coal} \) the processes \(
+    X \) and \( X' \) are in the same state and will continues as if
+    they were both starting anew in that state.  Thus modifying \( X \)
+    by switching to \( X \) at time \( \tau_{coal} \) will not change
+    its distribution, that is, \( X'' \) is yet another copy of \( X' \)
+    Thus, \( (X,X'') \) is a coupling of \( X, X' \) the \defn{classical
+    coupling}.  Note carefully the distinct primes and the joint
+    distribution of \( (X,X'') \)
+\end{definition}
+
+\begin{theorem}[Markovian Coupling Inequality]
+    \begin{enumerate}
+        \item
+            Let \( (X_t, Y_t) \) be a Markovian coupling with \( X_0 = x
+            \) and \( Y_0 = y \)
+        \item
+            Let \( \tau_{\text{coal}} \) be the coalescence time, that
+            is, the minimum value of \( t \) such that \( X_t = Y_t \)
+    \end{enumerate}
+    Then
+    \[
+        \| P^t(x,\cdot) - P^t(y,\cdot)\|_{TV} \le \Probsub{x,y}{X_t \ne
+        Y_t} = \Prob{t < \tau_{\text{coal}}}.
+    \]
+\end{theorem}
+
+\begin{proof}
+    \begin{enumerate}
+        \item
+            Fist observe that \( P^t(x,z) = \Probsub{x,y}{X_t = z} \)
+            and \( \Probsub {x,y}{Y_t = z} \) because the coupling is a
+            Markovian coupling.
+        \item
+            By the Coupling Inequality
+            \[
+                \| P^t(x,\cdot) - P^t(y,\cdot)\|_{TV} \le \Prob{X_t \ne
+                Y_t}.
+            \]
+        \item
+            But the event \( [X_t \ne Y_t] \) is precisely the event \(
+            [\tau_ {\text{coal}}] \) establishing the theorem.
+    \end{enumerate}
+\end{proof}
+
+\begin{corollary}
+    \begin{enumerate}
+        \item
+            Let \( (X_t, Y_t) \) be a Markovian coupling with \( X_0 = x
+            \) and \( Y_0 = y \)
+        \item
+            For each \( x \) and \( y \) Let \( \tau_{x,y,\text{coal}} \)
+            be the coalescence time, that is, the minimum value of \( t \)
+            such that \( X_t = Y_t \).
+    \end{enumerate}
+    Then
+    \[
+        \| P^t(x,\cdot) - P^t(y,\cdot)\|_{TV} \le \max_{x,y \in \mathcal
+          {X}} \Probsub{x,y}{\tau_{x,y,\text{coal}}}.
+    \]    
+    \end{corollary}
+
+    \begin{proof}
+        Left as an exercise.
+    \end{proof}
+
+    The coupling is called successful if \( \Prob{\tau_{coal} < \infty} =
+    1 \) A successful coupling implies \emph{asymptotic loss of memory},
+    \( \| x P^t - x' P^t \|_{TV} \to 0 \) at \( t \to \infty \).  Now
+    the goal is to identify natural conditions on Markov chains that
+    imply successful couplings.
+
+    Letting \( \tau_j \) be the first time greater than \( 0 \) that the
+    Markov chain visits or returns to \( j \), recurrence means \(
+    \Probsub{j}{\tau_j < \infty} = 1 \).  Recall that the Markov chain
+    is called \emph{recurrent} if each state is recurrent.%
+    \index{recurrent}
+    If the Markov chain is irreducible, then \( \Probsub{x}{\tau_j <
+    \infty} = 1 \) for all initial distributions \( x \) and all states \(
+    j \).  Otherwise, there would be states \( i \) and \( j \) such
+    that \( X \) could go from \( j \) to \( i \) and never return to \(
+    j \), contradicting the recurrence of \( j \).
+
+    \begin{example}
+        Consider a simple case where the states of both recurrent chains
+        \( X \) and \( X' \) change by \( \pm 1 \) on a state space
+        including \( 0 \).  This would include the alternate Ehrenfest
+        model.  Since chains \( X \) and \( X' \) change by \( \pm 1 \),
+        \( X \) and \( X' \) cannot pass each other without meeting.
+        Thus, if \( X \) starts above \( X' \), then \( X' \) can hit \(
+        0 \) before the two chains meet.  That is, \( \tau_{coal} \le
+        \tau_0 \).  Likewise, if \( X \) starts below \( X' \), then \(
+        X \) can hit \( 0 \) before the two chains meet, \( \tau_{coal}
+        \le \tau_0' \).  In summary, \( \tau_{coal} \le \max(\tau_0,
+        \tau_0') \).  If the chains are recurrent, then the last
+        inequality implies \( \Prob{\tau_{coal} < \infty} = 1 \) and
+        therefore, \( \| x P^t - x' P^t\|_{TV} \to 0 \) at \( t \to
+        \infty \).
+    \end{example}
+
+    The next step shows that recurrence implies the existence of a
+    stationary vector.  The proof uses only standard probability
+    arguments, without using coupling.  Suppose that \( X \) is a
+    recurrent Markov chain on a finite state space \( \mathcal{X} \)
+    with transition probability matrix \( P \).  Fix an arbitrary state \(
+    k \) and let \( n_{i} \) be the expected number of steps the chain
+    spends in state \( i \) between visits to state \( k \)
+    \[
+        n_i = \Esub{k}{\sum\limits_{\nu=1}^{\tau_k} \indicatorrv{X_{\nu} =
+        i}}.
+    \] The claim is that the row vector \( n \) with entries \( n_i \)
+    for each \( i \in \mathcal{X} \) is stationary, that is \( nP^t = n \).
+    The claim is established by noting
+    \begin{align*}
+        n_i &= \Esub{k}{\sum\limits_{\nu=1}^{\tau_k} \indicatorrv{X_{\nu}
+        = i}}\\
+        &= \Esub{k}{\sum\limits_{\nu=1}^{\infty} \indicatorrv{X_{\nu} = i,
+        \tau_k > \nu}} \\
+        &= \sum\limits_{\nu=1}^{\infty} \Prob{X_{\nu} = i, \tau_k > \nu}.
+    \end{align*}
+    It is possible to determine if the event \( [\tau_k > \nu] \)
+    happens or not by observing \( X \) on steps \( 1, \dots, \nu \).
+    By the Markov property, conditionally on the event \( [X_{\nu} = i,
+    \tau_k > \nu] \), the process starts over in state \( i \) at time \(
+    \nu \), that is,
+    \[
+        P_{ij}^t = \Probsub{k}{X_{\nu + t} = j \given X_{\nu} = i, \tau_k
+        > \nu}.
+    \] Then
+    \begin{align*}
+        n_i P_{ij}^t &= {\sum\limits_{\nu=1}^{\infty} \Prob{X_{\nu} = i,
+        \tau_k > \nu}} \cdot \Probsub{k}{X_{\nu + t} = j \given X_{\nu}
+        = i, \tau_k > \nu} \\
+        &= \sum\limits_{\nu=1}^{\infty} \Probsub{k}{X_{\nu+t} = j, X_\nu=
+        i, \tau_k > \nu}.
+    \end{align*}
+    Now sum over states \( i \), recalling that the state space is
+    finite, so interchanging the sums is possible:
+    \begin{align*}
+        n P_{\dot,j}^{t} &=\sum\limits_{n=0}^{\infty} \Probsub{k}{X_{\nu+t}
+        = j, \tau_k > \nu} \\
+        &=\Esub{k}{\sum\limits_{\nu=0}^{\tau_k} \indicatorrv{X_{\nu+t} = j}}
+        \\
+        &= \Esub{k}{\sum\limits_{\nu=t}^{\tau_k + t} \indicatorrv{X_{\nu}
+        = j}} \\
+        &= \Esub{k}{\sum\limits_{\nu=t}^{\tau_k } \indicatorrv{X_{\nu} = j}}
+        + \Esub{k}{\sum\limits_{\nu=\tau_k}^{\tau_k +t} \indicatorrv{X_{\nu}
+        = j}}.
+    \end{align*}
+    Since \( X \) starts anew in state \( k \) at time \( \tau_k \), the
+    last summand can be replaced by
+    \[
+        \Esub{k}{\sum\limits_{\nu=0}^t} \indicatorrv{X_{\nu} = j}.
+    \] Substituting
+    \begin{align*}
+        n P_{\dot,j}^{t} &= \Esub{k}{\sum\limits_{\nu=t}^{\tau_k }
+        \indicatorrv{X_{\nu} = j}} + \Esub{k}{\sum\limits_{\nu=0}^{t}
+        \indicatorrv{X_{\nu} = j}} \\
+        &= \Esub{k}{\sum\limits_{\nu=0}^{\tau_k} \indicatorrv{X_{\nu} = j}}
+        = n_j
+    \end{align*}
+    Note also that
+    \begin{align*}
+        \sum_{i \in \mathcal{X}} n_i &= \Esub{k}{ \sum\limits_{\nu=0}^{\tau_k}
+        \sum\limits_{i \in \mathcal{X}} \indicatorrv{X_{\nu} = i}} \\
+        &= \Esub{\sum\limits_{\nu=0}^{\tau_k} 1} = \Esub{k}{\tau_k}
+    \end{align*}
+
+    The Markov chain is \defn{positive recurrent} if \( m_j = \Esub{j}{\tau_j
+    < \infty} \).  Note that by definition, if a \emph{finite} Markov
+    chain is irreducible, it is necessarily positive recurrent.  In this
+    case, the row vector \( \pi = n/(\sum_{\nu} n_\nu) \) is a
+    stationary distribution for \( X \), that is
+    \[
+        \pi P^t = \pi, \qquad \sum_{i \in \mathcal{X}} \pi_i = 1.
+    \]
+
+    Now return to using coupling again.  Choose the process \( X' \) to
+    be the stationary chain starting from \( \pi \).  Then \( \| x P^t -\pi\|_
+    {TV} \to 0 \) for any starting distribution \( x \).
+
+    \visual{Section Starter Question}{../../../../CommonInformation/Lessons/question_mark.png}
+\section*{Section Ending Answer}
+
+The Poisson approximation to the binomial distribution with large \( n \)
+and small \( p \) such that \( np = \lambda \) is
+\[
+    \operatorname{Bin}
+    (k; n, p) = \binom{n}{k}p^k(1-p)^{n-k} \approx \frac{\lambda^k}{k!}
+    \EulerE^{-\lambda}.
+\] A simple proof starts with \(
+\operatorname{Bin}
+(0; n, p) = (1-p)^n = \left( 1 - \frac{\lambda}{n} \right)^n \), takes
+logarithms, uses a Taylor expansion to obtain \(
+\operatorname{Bin}
+(k; n, p) \approx \frac{\lambda^k}{k!} \EulerE^{-\lambda} \).  Then
+mathematical induction gives
+\[
+    \operatorname{Bin}
+    (k; n, p) = \binom{n}{k}p^k(1-p)^{n-k} \approx \frac{\lambda^k}{k!}.
+\] Other typical proofs use characteristic functions and generating
+functions.  This section gives a proof using the idea of coupling to
+deduce distributional relations between the binomial and Poisson
+distributions.
+
+\subsection*{Sources} The section on coupling random variables is
+adapted from
+\cite{thorisson_2000}.  The section on coupling in Markov chains is
+adapted from
+\cite{levin09} and
+\cite{thorisson_2000}.
+
+% \nocite{}
+% \nocite{}
+
+\hr
+
+\visual{Algorithms, Scripts, Simulations}{../../../../CommonInformation/Lessons/computer.png}
+\section*{Algorithms, Scripts, Simulations}
+
+\subsection*{Algorithm}
+\begin{algorithm}[H]
+  \DontPrintSemicolon
+  \SetKwInOut{Input}{Input}
+  \SetKwInOut{Output}{Output}
+  \SetKwData{pL}{pathLength}
+  \SetKwData{nT}{nTrials}
+  \SetKwData{res}{results}
+  \SetKwData{oT}{outlierThreshold}
+  \SetKwData{nEO}{nEpsilonOutlier}
+  \SetKwData{pEO}{probEpsOutlier}
+  \SetKwFunction{Floor}{floor}
+
+  \Input{Number of balls $ N $ and probability of urn switch, $ p $}
+  \Output{Table of empirical probabilities of $ \epsilon $-Outlier
+    Test success.}
+  \BlankLine
+  $ N \leftarrow 7 $, $ p \leftarrow 1/2 $,
+  $ q \leftarrow 1-p $\;
+  \tcp{Build $ (N+1) \times (N+1) $ transition probability matrix}
+  $ P_{11} \leftarrow q $, $ P_{12} \leftarrow p $\;
+  $ P_{N+1,N} \leftarrow q $, $ P_{N+1, N+1} \leftarrow p $\;
+  \For{$ r \leftarrow 2 $ \KwTo $ N $}{
+    $ P_{r,r-1} \leftarrow (r-1)/N \cdot q $\;
+    $ P_{r,r} \leftarrow (N-(r-1))/N \cdot q + (r-1)/N \cdot p $\;
+    $ P_{r,r-1} \leftarrow (N-(r-1))/N \cdot p $\;
+  }
+  \tcp{initialize and build Markov chain}
+  Build $ X $ and $ Y $ Markov chain objects\;
+  \BlankLine
+  Set \pL, set \nT, initialize distribution for $\tau_{\text{coal}}$;
+  \ForEach{element in \nT} {
+    Run $ X $, $ Y $ Markov chains of length \pL;
+    Find $ \tau_{\text{coal}} $, increment distribution;
+  }
+  Normalize distribution;
+  Calculate distribution after $ 10 $ steps, starting from $ 0 $;
+  Calculate Total Variation distance from stationary;
+  Calculate empirical probability $ \tau_{\text{coal}} < 10 $;
+  Print results for comparison;
+\end{algorithm}
+
+\subsection*{Scripts}
+
+\input{introcoupling_scripts}
+
+\hr
+
+\visual{Problems to Work}{../../../../CommonInformation/Lessons/solveproblems.png}
+\section*{Problems to Work for Understanding}
+\renewcommand{\theexerciseseries}{}
+\renewcommand{\theexercise}{\arabic{exercise}}
+
+\begin{exercise}
+    Let \( \mathcal{X} = \set{0,1} \) and consider the probability
+    transition matrix on \( \mathcal{X} \):
+    \[
+        P =
+        \begin{pmatrix}
+            1/2 & 1/2 \\
+            1/2 & 1/2 \\
+        \end{pmatrix}
+        .
+    \] Let \( (Y_t) \) for \( t = 0,1,2, \dots \) be a Markov chain with
+    transition matrix \( P \) started in one of the two states
+    determined by a fair coin toss.  Let \( X_0 = 0 \) be in the first
+    state and \( X_{t+1} = Y_t \) for \( t=0, 1, 2, \dots \).  Show that
+    \( (X_t, Y_t) \) is a coupling, and the sequence \( (X_t, Y_t) \) is
+    a Markov chain but it is not a Markovian coupling.
+\end{exercise}
+\begin{solution}
+    Here the \( X \) process and the \( Y \) process definitely have
+    different starting distributions.  But the \( X \) process and the \(
+    Y \) process both have the same (simple) transition probabilities.
+    Process \( Y \) by definition transition probability matrix \( P \).
+    To be explicit, suppose \( Y_0 = 0 \), and the first \( 5 \)
+    transitions for \( Y \) are \( 0 \to 1 \), \( 1 \to 1 \), \( 1 \to 1
+    \), \( 1 \to 0 \), and \( 0 \to 1 \).  Then the states are \( Y_0 =
+    0 \), \( Y_1 = 1 \), \( Y_2 = 1 \), \( Y_3 = 1 \), \( Y_4 = 0 \), \(
+    Y_5 = 1 \).  By the definition of \( X_{t} \), \( X_0 = 0 \), \( X_1
+    = Y_0 = 0 \), \( X_2 = Y_1 = 1 \), \( X_3 = Y_2 = 1 \), \( X_4 = Y_3
+    = 1 \), \( X_5 = Y_4 = 0 \).  Then, for example
+    \[
+        \Prob{X_{t+1} = 0 \given X_t = 0} = \Prob{Y_t = 0 \given Y_{t-1}
+        = 0} = 1/2
+    \] and likewise for the other three transition probabilities.  Thus,
+    \( X_t \) also has transition probability matrix \( P \).
+    Furthermore, this same construction shows that \( (X_t, Y_t) \) is a
+    Markov process on the \( 4 \)-element state space.  However
+    \[
+        \Prob{X_{1} = 0 \given X_0 = 0, Y_0 = 0} = 1 \ne 1/2.
+    \] Essentially, the joint process is correct, but the marginals are
+    not correct.
+\end{solution}
+
+\begin{exercise}
+    Let \( (X_t, Y_t) \) be a Markovian coupling with \( X_0 = x \) and \(
+    Y_0 = y \).  For each \( x \) and \( y \) Let \( \tau_{x,y,\text{coal}}
+    \) be the coalescence time, that is, the minimum value of \( t \)
+    such that \( X_t = Y_t \).  Then
+    \[
+        \| P^t(x,\cdot) - P^t(y,\cdot)\|_{TV} \le \max_{x,y \in \mathcal
+        {X}} \Probsub{x,y}{\tau_{x,y,\text{coal}}}.
+    \]
+\end{exercise}
+\begin{solution}
+
+\end{solution}
+
+\hr
+
+\visual{Books}{../../../../CommonInformation/Lessons/books.png}
+\section*{Reading Suggestion:}
+
+\bibliography{../../../../CommonInformation/bibliography}
+
+%   \begin{enumerate}
+%     \item
+%     \item
+%     \item
+%   \end{enumerate}
+
+\hr
+
+\visual{Links}{../../../../CommonInformation/Lessons/chainlink.png}
+\section*{Outside Readings and Links:}
+\begin{enumerate}
+    \item
+    \item
+    \item
+    \item
+\end{enumerate}
+
+\section*{\solutionsname} \loadSolutions
+
+\hr
+
+\mydisclaim \myfooter
+
+Last modified:  \flastmod
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
